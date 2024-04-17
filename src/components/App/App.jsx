@@ -17,7 +17,7 @@ export default function App() {
   }, [contacts]);
 
   const handleSearchChange = (event) => {
-    setContacts(event.target.value);
+    setFilter(event.target.value);
   };
 
   const filteredContacts = contacts.filter((contact) =>
