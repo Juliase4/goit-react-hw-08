@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
-  border: 2px solid black;
+  border: 2px solid #0b85cd;
   border-radius: 5px;
   padding: 10px;
   max-width: 400px;
@@ -11,8 +11,7 @@
 
 .btn {
   border-radius: 8px;
-  border: 2px solid gray;
-  padding: .6em 1.2em;
+  border: 2px solid rgb(26, 106, 120);
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
