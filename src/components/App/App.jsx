@@ -5,8 +5,8 @@ import Error from "../Error/Error";
 import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
-import { fetchContacts } from "../../redux/contactsOps";
-import { selectError, selectLoading } from "../../redux/contactsSlice";
+import { fetchContacts } from "../../redux/contacts/operations";
+import { selectError, selectLoading } from "../../redux/contacts/selectors";
 import { FaAddressBook } from "react-icons/fa6";
 import style from "./App.module.css";
 
