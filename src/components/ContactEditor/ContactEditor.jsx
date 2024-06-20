@@ -1,72 +1,68 @@
+import { useId } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
-import css from "./ContactEditor.module.css";
-import { useId } from "react";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import * as Yup from "yup";
+
+import css from "./ContactForm.module.css";
 
 export default function ContactEditor() {
   const dispatch = useDispatch();
 
-  const FeedbackSchema = Yup.object().shape({
-    name: Yup.string()
-      .min(2, "Too Short")
-      .max(50, "Too Long")
-      .required("Required"),
-    number: Yup.string()
-      .min(6, "Too Short")
-      .max(15, "Too Long")
-      .required("Required"),
-  });
+  const nameId = useId();
+  const numberId = useId();
 
-  const nameFieldId = useId();
-  const phoneFieldId = useId();
-
-  function handleSubmit(values, action) {
+  const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
-    action.resetForm();
-  }
+    actions.resetForm();
+  };
 
   return (
     <Formik
-      initialValues={{
-        name: "",
-        number: "",
-      }}
-      validationSchema={FeedbackSchema}
+      initialValues={{ name: "", number: "" }}
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .min(3, "Too Short!")
+          .max(50, "Too Long!")
+          .required("Required"),
+        number: Yup.string()
+          .matches(/[0-9]{3}-[0-9]{2}-[0-9]{2}/, {
+            message: "Number format: XXX-XX-XX",
+            excludeEmptyString: false,
+          })
+          .required("Required"),
+      })}
       onSubmit={handleSubmit}>
-      <Form className={css.formContainer}>
-        <label
-          htmlFor={nameFieldId}
-          className={css.label}>
-          Name
-        </label>
+      <Form className={css.form}>
+        <label htmlFor={nameId}>Name</label>
         <Field
           type="text"
+          id={nameId}
           name="name"
-          id={nameFieldId}
-          className={css.inputField}
         />
         <ErrorMessage
+          className={css.error}
           name="name"
           component="span"
-          className={css.errorMessage}
         />
 
-        <label htmlFor={phoneFieldId}>Number</label>
+        <label htmlFor={numberId}>Number</label>
         <Field
           type="text"
+          id={numberId}
           name="number"
-          id={phoneFieldId}
-          className={css.inputField}
         />
         <ErrorMessage
           name="number"
           component="span"
-          className={css.errorMessage}
+          className={css.error}
         />
 
-        <button type="submit">Add contact</button>
+        <button
+          className={css.btn}
+          type="submit">
+          Add Contact
+        </button>
       </Form>
     </Formik>
   );
