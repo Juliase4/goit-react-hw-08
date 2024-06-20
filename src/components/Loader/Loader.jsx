@@ -1,17 +1,23 @@
-import { Circles } from "react-loader-spinner";
+import { useState, useEffect } from "react";
+import css from "./Loader.module.css";
 
-export default function Loader() {
+export default function Loader({ children }) {
+  const [dots, setDots] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots((dots) => (dots.length < 3 ? dots + "." : ""));
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <span>
-      <Circles
-        height="80"
-        width="80"
-        color="rgb(26, 106, 120)"
-        ariaLabel="circles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-      />
-    </span>
+    <p className={css.text}>
+      <b>
+        {children}
+        {dots}
+      </b>
+    </p>
   );
 }
