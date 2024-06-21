@@ -1,21 +1,17 @@
 import PageTitle from "../../components/PageTitle/PageTitle.jsx";
+import { FaAddressBook } from "react-icons/fa6";
+
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className={css.container}>
       <PageTitle>
-        Contacts manager welcome page{" "}
-        <span
-          role="img"
-          aria-label="Greeting icon">
-          💁‍♀️
+        Welcome Phonebook page{" "}
+        <span className={css.icon}>
+          <FaAddressBook />
         </span>
       </PageTitle>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-        asperiores eius nobis saepe quis voluptatibus facere expedita tempora,
-        hic similique natus minima
-      </p>
     </div>
   );
 }

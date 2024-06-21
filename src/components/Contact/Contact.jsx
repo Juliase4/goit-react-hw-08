@@ -1,7 +1,7 @@
 import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
-import { FaUser } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
+import { FaUser, FaPhone } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 import css from "./Contact.module.css";
 
 export default function Contact({ contact: { id, name, number } }) {
@@ -25,7 +25,7 @@ export default function Contact({ contact: { id, name, number } }) {
         className={css.btn}
         type="button"
         onClick={() => handleDelete(id)}>
-        Delete
+        <MdDeleteForever />
       </button>
     </div>
   );

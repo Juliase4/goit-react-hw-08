@@ -2,9 +2,10 @@ import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import { IoPersonAddSharp } from "react-icons/io5";
 import { addContact } from "../../redux/contacts/operations";
 
-import css from "./ContactForm.module.css";
+import css from "./ContactEditor.module.css";
 
 export default function ContactEditor() {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export default function ContactEditor() {
         <button
           className={css.btn}
           type="submit">
-          Add Contact
+          <IoPersonAddSharp />
         </button>
       </Form>
     </Formik>

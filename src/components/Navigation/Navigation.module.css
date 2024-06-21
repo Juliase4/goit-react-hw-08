@@ -2,10 +2,13 @@
   display: inline-block;
   text-decoration: none;
   padding: 12px;
-  font-weight: 700;
-  color: #2a363b;
 }
 
 .link.active {
   color: red;
+}
+
+.icon {
+  font-size: 32px;
+  color: #7B68EE;
 }
